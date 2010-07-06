@@ -1,0 +1,81 @@
+
+<!doctype html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module Algorithm</title>
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>Algorithm</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/Users/cristi/Research/MovieLensData/Algorithm.py">/Users/cristi/Research/MovieLensData/Algorithm.py</a></font></td></tr></table>
+    <p></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="numpy.html">numpy</a><br>
+</td><td width="25%" valign=top><a href="cPickle.html">cPickle</a><br>
+</td><td width="25%" valign=top><a href="datetime.html">datetime</a><br>
+</td><td width="25%" valign=top><a href="sqlite3.html">sqlite3</a><br>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="Algorithm.html#Algorithm">Algorithm</a>
+</font></dt></dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Algorithm">class <strong>Algorithm</strong></a></font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Algorithm-__init__"><strong>__init__</strong></a>(self, params)</dt><dd><tt>constructor&nbsp;of&nbsp;the&nbsp;algorithm.&nbsp;params&nbsp;is&nbsp;a&nbsp;dict&nbsp;and&nbsp;it&nbsp;represents&nbsp;the&nbsp;parameters&nbsp;of&nbsp;the&nbsp;training.&nbsp;Bellow&nbsp;is&nbsp;a&nbsp;list&nbsp;of<br>
+a&nbsp;possible&nbsp;configuration:<br>
+&nbsp;<br>
+params&nbsp;=&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;'ALGORITHM'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;'ISMF',&nbsp;#&nbsp;ISMF&nbsp;or&nbsp;RISMF<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;'MIN_IMPROVEMENT'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;0.0001,&nbsp;&nbsp;#&nbsp;Minimum&nbsp;improvement&nbsp;required&nbsp;to&nbsp;continue&nbsp;current&nbsp;feature<br>
+&nbsp;&nbsp;&nbsp;&nbsp;'LEARNING_RATE'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;0.001,&nbsp;&nbsp;&nbsp;#&nbsp;Learning&nbsp;rate<br>
+&nbsp;&nbsp;&nbsp;&nbsp;'REG_FACTOR'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;0.015,&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;'MAX_FEATURES'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;20,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;Number&nbsp;of&nbsp;features&nbsp;to&nbsp;use;&nbsp;or&nbsp;factors<br>
+&nbsp;&nbsp;&nbsp;&nbsp;'DEFAULT_FEATURE_VALUE':&nbsp;0.1,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;Initialization&nbsp;value&nbsp;for&nbsp;features<br>
+&nbsp;&nbsp;&nbsp;&nbsp;'SQR_INIT'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;0.01,&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;DEFAULT_FEATURE_VALUE&nbsp;*&nbsp;DEFAULT_FEATURE_VALUE<br>
+&nbsp;&nbsp;&nbsp;&nbsp;'MAX_EPOCHS'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;50,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;Max&nbsp;epochs&nbsp;per&nbsp;feature<br>
+&nbsp;&nbsp;&nbsp;&nbsp;'MIN_EPOCHS'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;1,<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;'MAX_MOVIES'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;1683,&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;Movies&nbsp;in&nbsp;entire&nbsp;training&nbsp;set&nbsp;(+1)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;'MAX_USERS'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;944,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;Users&nbsp;in&nbsp;entire&nbsp;training&nbsp;set&nbsp;(+1)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;'MAX_RATINGS'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;100001,&nbsp;&nbsp;#&nbsp;Ratings&nbsp;in&nbsp;entire&nbsp;training&nbsp;set&nbsp;(+1)<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;'TRAINING_DATASET'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;'dataset/u1.base',<br>
+&nbsp;&nbsp;&nbsp;&nbsp;'TEST_DATASET'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;'dataset/u1.test',<br>
+&nbsp;&nbsp;&nbsp;&nbsp;'RECORD_RESULTS_TO_SQL':&nbsp;True,<br>
+}</tt></dd></dl>
+
+<dl><dt><a name="Algorithm-compute_features"><strong>compute_features</strong></a>(self)</dt><dd><tt>compute&nbsp;userFeatured&nbsp;and&nbsp;movieFeatures&nbsp;matrices&nbsp;used&nbsp;to&nbsp;predict&nbsp;the&nbsp;ratings&nbsp;for&nbsp;the&nbsp;users.</tt></dd></dl>
+
+<dl><dt><a name="Algorithm-predict_rating"><strong>predict_rating</strong></a>(self, movie_id, user_id, feature, cache, bTrailing<font color="#909090">=True</font>)</dt><dd><tt>Computes&nbsp;the&nbsp;rating&nbsp;at&nbsp;a&nbsp;certain&nbsp;moment&nbsp;for&nbsp;movie_id&nbsp;and&nbsp;user_id.</tt></dd></dl>
+
+<dl><dt><a name="Algorithm-print_params"><strong>print_params</strong></a>(self)</dt><dd><tt>prints&nbsp;the&nbsp;params&nbsp;involved&nbsp;into&nbsp;the&nbsp;training&nbsp;to&nbsp;standard&nbsp;output.</tt></dd></dl>
+
+<dl><dt><a name="Algorithm-read_data"><strong>read_data</strong></a>(self)</dt><dd><tt>read&nbsp;data&nbsp;from&nbsp;the&nbsp;file&nbsp;given&nbsp;in&nbsp;the&nbsp;params['TRAINING_DATASET']&nbsp;parameter.&nbsp;Data&nbsp;format&nbsp;is&nbsp;in&nbsp;tab&nbsp;separated&nbsp;values:<br>
+user_id&nbsp;|&nbsp;movie_id&nbsp;|&nbsp;rating</tt></dd></dl>
+
+<dl><dt><a name="Algorithm-record_to_sql"><strong>record_to_sql</strong></a>(self, database_path)</dt><dd><tt>records&nbsp;the&nbsp;results&nbsp;obtain&nbsp;after&nbsp;running&nbsp;the&nbsp;training&nbsp;into&nbsp;a&nbsp;sqlite3&nbsp;database.&nbsp;The&nbsp;path&nbsp;is&nbsp;given&nbsp;as&nbsp;a&nbsp;parameter.&nbsp;<br>
+If&nbsp;the&nbsp;database&nbsp;does&nbsp;not&nbsp;exist,&nbsp;then&nbsp;it&nbsp;is&nbsp;created.</tt></dd></dl>
+
+<dl><dt><a name="Algorithm-run"><strong>run</strong></a>(self)</dt><dd><tt>Run&nbsp;a&nbsp;training.</tt></dd></dl>
+
+</td></tr></table></td></tr></table>
+</body></html>
